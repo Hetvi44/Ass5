@@ -8,26 +8,24 @@ const Products = () => {
   );
 
   if (loading) {
-    return <h2 className="status">Loading products...</h2>;
+    return <h2>Loading...</h2>;
   }
 
   if (error) {
-    return <h2 className="status error">Error: {error}</h2>;
+    return <h2>Error: {error}</h2>;
   }
 
   return (
     <div className="container">
-      <h1>Product List</h1>
-      <div className="products">
-        {data &&
-          data.slice(0, 10).map((product) => (
-            <div key={product.id} className="card">
-              <img src={product.images[0]} alt={product.title} />
-              <h3>{product.title}</h3>
-              <p>₹ {product.price}</p>
-            </div>
-          ))}
-      </div>
+      <h1>Products</h1>
+
+      {data.map((product) => (
+        <div key={product.id} className="card">
+          <img src={product.images[0]} alt={product.title} />
+          <h3>{product.title}</h3>
+          <p>Price: ${product.price}</p>
+        </div>
+      ))}
     </div>
   );
 };
